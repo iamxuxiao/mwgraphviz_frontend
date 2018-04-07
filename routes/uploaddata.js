@@ -6,7 +6,7 @@ var request = require('request');
 router.post('/', function(req, res, next) {
     //console.log(JSON.stringify(req.body.data));
 
-    var url="https://ki5uddwq65.execute-api.us-east-1.amazonaws.com/mwgraphviz/upload";
+    var url="https://XXXX.execute-api.us-east-1.amazonaws.com/mwgraphviz/upload";
     request.post(
 	{            
  	    url:url,
@@ -15,11 +15,7 @@ router.post('/', function(req, res, next) {
            } 
 	}
 	,function(error, response,body){
-	    console.log("post done")
 	    var str = response;
-	    //console.log(str);
-	    //console.log("-------------");
-	    //console.log(error);
             res.send(str.body);
  	    
 	});
