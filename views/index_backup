@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+ 
+
+
+
+</head>
+
+
+  <body>
+    <div class="section">
+      <button type="button" class="btn btn-primary" id="post_button">Draw graph</button>
+    </div>
+    <div class="section">
+      <div class="row">
+        <div class="col-lg-6">
+      <div style="display:inline-block" >
+        <textarea style="width:1200px" class="form-control" rows="20" placeholder="enter dot text here" required id="dottext"></textarea>                
+      </div>
+        </div>
+      </div>
+    </div>
+      
+      <div style="display:inline-block" id="mysvg">
+      </div>
+      
+
+
+  
+
+  </body>
+
+
+
+    <script type="text/javascript">
+
+
+
+      $(document).ready(function() {
+          //console.log('i am  ready')
+      
+          $('#post_button').on('click', function (e) {
+
+              console.log('button clicked');
+              var inputText = document.getElementById("dottext").value;     
+              $.post('/postdata',
+                     {data: inputText},
+                     function(res){
+                         //console.log(res);
+                         var theSVG = document.getElementById("mysvg");
+                         theSVG.innerHTML=res;
+                         
+
+              });    
+       }) 
+
+    });
+</script>
+
+</html>
